@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
 
 function App() {
+
+  const [ counter, setCounter ] = useState(10);
+  
+  useEffect(() => {
+
+    setTimeout(() => {
+      setCounter(counter - 1);
+
+      if(counter === 0){
+        setCounter(10);
+      }
+      
+    }, 1000);
+
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Counter Down: {counter}</h1>
     </div>
   );
 }
